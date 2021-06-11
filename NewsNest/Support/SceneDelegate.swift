@@ -13,10 +13,42 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        
+        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+        window?.windowScene = windowScene
+        window?.rootViewController = createTabBar()
+        window?.makeKeyAndVisible()
+    }
+    
+    
+    func createTopHeadlinesNC() -> UINavigationController {
+        let topHeadlinesVC = TopHeadlinesVC()
+        topHeadlinesVC.title = "Top Headlines"
+        topHeadlinesVC.tabBarItem = UITabBarItem(title: "Top Headlines", image: UIImage(systemName: "newspaper"),tag: 0)
+        return UINavigationController(rootViewController: topHeadlinesVC)
+    }
+    
+    func createSearchNC() -> UINavigationController {
+        let searchVC = NewsSearchVC()
+        searchVC.title = "News Search"
+        searchVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
+        return UINavigationController(rootViewController: searchVC)
+    }
+    
+    func createCategoryNC() -> UINavigationController {
+        let categoryVC = NewsCategoryVC()
+        categoryVC.title = "News by Category"
+        categoryVC.tabBarItem = UITabBarItem(title: "Category", image: UIImage(systemName: "tag"),tag: 2)
+        return UINavigationController(rootViewController: categoryVC)
+    }
+    
+    func createTabBar() -> UITabBarController {
+        let tabBar = UITabBarController()
+        UITabBar.appearance().tintColor = .systemBlue
+        tabBar.viewControllers = [createTopHeadlinesNC(), createSearchNC(), createCategoryNC()]
+        return tabBar
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
