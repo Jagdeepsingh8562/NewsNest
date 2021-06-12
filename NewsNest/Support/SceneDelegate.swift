@@ -27,6 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let topHeadlinesVC = TopHeadlinesVC()
         topHeadlinesVC.title = "Top Headlines"
         topHeadlinesVC.tabBarItem = UITabBarItem(title: "Top Headlines", image: UIImage(systemName: "newspaper"),tag: 0)
+        UINavigationBar.appearance().prefersLargeTitles = true
         return UINavigationController(rootViewController: topHeadlinesVC)
     }
     
