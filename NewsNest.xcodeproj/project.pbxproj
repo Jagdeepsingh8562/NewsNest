@@ -15,6 +15,7 @@
 		B9AA65A92674DDFD00AEF335 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AA65A82674DDFD00AEF335 /* CustomError.swift */; };
 		B9AA65AB2674DF6100AEF335 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AA65AA2674DF6100AEF335 /* ErrorResponse.swift */; };
 		B9AA65AD2674E4EF00AEF335 /* NewsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AA65AC2674E4EF00AEF335 /* NewsResponse.swift */; };
+		B9AA65B02674F70700AEF335 /* Extension + ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AA65AF2674F70700AEF335 /* Extension + ViewController.swift */; };
 		B9EFFF912673BFFA00A1D514 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EFFF902673BFFA00A1D514 /* AppDelegate.swift */; };
 		B9EFFF932673BFFA00A1D514 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EFFF922673BFFA00A1D514 /* SceneDelegate.swift */; };
 		B9EFFF9A2673BFFB00A1D514 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9EFFF992673BFFB00A1D514 /* Assets.xcassets */; };
@@ -33,6 +34,7 @@
 		B9AA65A82674DDFD00AEF335 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
 		B9AA65AA2674DF6100AEF335 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		B9AA65AC2674E4EF00AEF335 /* NewsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsResponse.swift; sourceTree = "<group>"; };
+		B9AA65AF2674F70700AEF335 /* Extension + ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + ViewController.swift"; sourceTree = "<group>"; };
 		B9EFFF8D2673BFFA00A1D514 /* NewsNest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsNest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9EFFF902673BFFA00A1D514 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9EFFF922673BFFA00A1D514 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +65,14 @@
 			path = Utillties;
 			sourceTree = "<group>";
 		};
+		B9AA65AE2674F6A300AEF335 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				B9AA65AF2674F70700AEF335 /* Extension + ViewController.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		B9EFFF842673BFFA00A1D514 = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +92,7 @@
 		B9EFFF8F2673BFFA00A1D514 /* NewsNest */ = {
 			isa = PBXGroup;
 			children = (
+				B9AA65AE2674F6A300AEF335 /* Extension */,
 				B9AA65A72674DDD100AEF335 /* Utillties */,
 				B9EFFFA82673C33E00A1D514 /* Custom Views */,
 				B9EFFFA72673C33300A1D514 /* Manager */,
@@ -211,6 +222,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9AA65B02674F70700AEF335 /* Extension + ViewController.swift in Sources */,
 				B9AA65A22674D3AD00AEF335 /* HeadlineLabel.swift in Sources */,
 				B9EFFFAE2673C5D500A1D514 /* NewsCategoryVC.swift in Sources */,
 				B9AA65A62674DC2800AEF335 /* NetworkManager.swift in Sources */,
@@ -372,7 +384,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = project.NewsNest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -391,7 +403,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = project.NewsNest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
