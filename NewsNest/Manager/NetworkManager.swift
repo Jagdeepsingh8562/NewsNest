@@ -31,7 +31,7 @@ class NetworkManager {
             case .getSearch(let query):
                 return Const.baseUrl + "everything?q=\(query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")&apiKey=" + Const.apiKey
             case .getByCategory(let selectedCategory):
-                return Const.baseUrl + "top-headlines?category=\(selectedCategory)&apiKey=" + Const.apiKey
+                return Const.baseUrl + "top-headlines?category=\(selectedCategory.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")&apiKey=" + Const.apiKey
             }
         }
     }

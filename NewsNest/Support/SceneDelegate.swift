@@ -42,7 +42,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let categoryVC = NewsCategoryVC()
         categoryVC.title = "News by Category"
         categoryVC.tabBarItem = UITabBarItem(title: "Category", image: UIImage(systemName: "tag"),tag: 2)
-        return UINavigationController(rootViewController: categoryVC)
+        let categoryNC = UINavigationController(rootViewController: categoryVC)
+        categoryNC.navigationBar.prefersLargeTitles = false
+        return categoryNC
     }
     
     func createTabBar() -> UITabBarController {
