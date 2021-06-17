@@ -35,7 +35,7 @@ class TopHeadlinesVC: UIViewController {
                 self.articles.append(contentsOf: articles)
                 self.tableView.reloadData()
             case .failure(let error):
-                self.showAlert(message: error.localizedDescription, title: "Something went wrong")
+                self.showAlert(message: error.rawValue, title: "Something went wrong")
             }
         }
     }

@@ -16,6 +16,8 @@ class NetworkManager {
     struct Const {
         static let apiKey = "282ee3ff78a643ea85af8bf4a7a58600"
         static let baseUrl = "https://newsapi.org/v2/"
+        static let nextapiKey = "54f67fff9b69491487e52907fe00ed49"
+        static let otherApiKey = "e12557646ee74056b38a68c1d45a22d2"
     }
     
     enum Endpoints {
@@ -27,16 +29,16 @@ class NetworkManager {
         var StringValue: String {
             switch self {
             case .getTopHeadlines(let page):
-                return Const.baseUrl + "top-headlines?country=in&pageSize=50&apiKey=" + Const.apiKey + "&page=\(page)"
+                return Const.baseUrl + "top-headlines?country=in&pageSize=50&apiKey=" + Const.nextapiKey + "&page=\(page)"
             case .getSearch(let query):
-                return Const.baseUrl + "everything?q=\(query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")&apiKey=" + Const.apiKey
+                return Const.baseUrl + "everything?q=\(query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")&apiKey=" + Const.nextapiKey
             case .getByCategory(let selectedCategory):
-                return Const.baseUrl + "top-headlines?category=\(selectedCategory.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")&apiKey=" + Const.apiKey
+                return Const.baseUrl + "top-headlines?category=\(selectedCategory.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")&apiKey=" + Const.otherApiKey
             }
         }
     }
     
-    func getTopHeadline(page: Int,completion: @escaping (Result<[Article], Error>) -> Void) {
+    func getTopHeadline(page: Int,completion: @escaping (Result<[Article], CustomError>) -> Void) {
         taskForGETRequest(url: Endpoints.getTopHeadlines(page).StringValue, responseType: NewsResponse.self, completion: { result in
             switch result {
             case .success(let articles):
@@ -47,7 +49,7 @@ class NetworkManager {
         })
     }
     
-    func getSearchResults(query: String,completion: @escaping (Result<[Article], Error>) -> Void) {
+    func getSearchResults(query: String,completion: @escaping (Result<[Article], CustomError>) -> Void) {
         taskForGETRequest(url: Endpoints.getSearch(query).StringValue, responseType: NewsResponse.self, completion: { result in
             switch result {
             case .success(let articles):
@@ -58,13 +60,12 @@ class NetworkManager {
         })
     }
     
-    func getByCategory(selectedCategory: String,completion: @escaping (Result<[Article], Error>) -> Void) {
+    func getByCategory(selectedCategory: String,completion: @escaping (Result<[Article], CustomError>) -> Void) {
         taskForGETRequest(url: Endpoints.getByCategory(selectedCategory).StringValue, responseType: NewsResponse.self, completion: { result in
             switch result {
             case .success(let articles):
                 completion(.success(articles))
             case .failure(let error):
-                print(error)
                 completion(.failure(error))
             }
         })
@@ -74,7 +75,7 @@ class NetworkManager {
     func taskForGETRequest(url: String, responseType: NewsResponse.Type, completion: @escaping (Result<[Article], CustomError>) -> Void) {
         guard let url = URL(string: url) else {
             DispatchQueue.main.async {
-                completion(.failure(.invaildResponse))
+                completion(.failure(.invaildRequest))
             }
             return
         }
@@ -103,17 +104,6 @@ class NetworkManager {
                     completion(.success(responseObject.articles))
                 }
             } catch {
-//                do {
-//                    let errorResponse = try JSONDecoder().decode(ErrorResponse.self, from: data) as! Error
-//                    DispatchQueue.main.async {
-//                        completion(.failure(.noData))
-//                    }
-//                } catch {
-//                    DispatchQueue.main.async {
-//                        completion(.failure(.invaildResponse))
-//                    }
-//                }
-                print(error)
                 completion(.failure(.invaildResponse))
             }
         }

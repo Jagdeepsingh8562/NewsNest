@@ -36,16 +36,13 @@ class NewsCategoryVC: UIViewController {
         }
         if let navigationBar = self.navigationController?.navigationBar {
             navigationBar.isTranslucent = false
-            //navigationBar.tintColor = UIColor.systemBackground
             navigationBar.titleTextAttributes = NSDictionary(object: UIColor.label, forKey: NSAttributedString.Key.foregroundColor as NSCopying) as? [NSAttributedString.Key : AnyObject]
-            //navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
             navigationBar.shadowImage = UIImage()
         }
         showLoadingView()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.4) {
             self.dismissLoadingView()
         }
-//        NotificationCenter.default.addObserver(self, selector: #selector(dismissLoadingView), name: Notification.Name(Keys.apiCallFinishedKey), object: nil)
     }
     
    
