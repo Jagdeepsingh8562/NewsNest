@@ -35,19 +35,54 @@ enum Constant {
         "Ireland":"ie",
         "Israel":"il",
         "India":"in",
-        "":"",
-        "":"",
-        "":"",
-        "":"",
-        "":"",
-        "":"",
-        "":"",
-        "":"",
+        "Italy":"it",
+        "Latvia":"lv",
+        "Morocco":"ma",
+        "Mexico":"mx",
+        "Malaysia":"my",
+        "Nigeria":"ng",
+        "Netherlands":"nl",
+        "Norway":"no",
+        "New Zealand":"nz",
+        "Philippines":"ph",
+        "Poland":"pl",
+        "Portugal":"pt",
+        "Romania":"ro",
+        "Serbia":"rs",
+        "Russia":"ru",
+        "Saudi Arabia":"sa",
+        "Sweden":"se",
+        "Singapore":"sg",
+        "Slovenia":"si",
+        "Slovakia":"sk",
+        "Thailand":"th",
+        "Turkey":"tr",
+        "Taiwan":"tw",
+        "Ukraine":"ua",
+        "United States":"us",
+        "Venezuela":"ve",
+        "South Africa":"za",
     ]
-    
+    static let languages: [String:String] = [
+        "Arabic":"ar",
+        "German":"de",
+        "English":"en",
+        "French":"fr",
+        "Hebrew":"he",
+        "Italian":"it",
+        "Dutch":"nl",
+        "Norwegian":"no",
+        "Portuguese":"pt",
+        "Chinese":"zh",
+        "Northern Sami":"se",
+        "Russian":"ru",
+    ]
     
 }
 
 enum Keys {
-   static let apiCallFinishedKey = "NEWSAPICallsIsFinished"
+    static let apiCallFinishedKey = "NEWSAPICallsIsFinished"
+    static let newUserKey = "NEWUSER"
+    static let countryKey = "COUNTRYKEY"
+    static let LanguageKey = "LANGUAGEKEY"
 }

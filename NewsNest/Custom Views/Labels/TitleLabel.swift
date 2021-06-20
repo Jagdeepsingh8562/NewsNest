@@ -1,24 +1,22 @@
 //
-//  HeadlineLabel.swift
+//  TitleLabel.swift
 //  NewsNest
 //
-//  Created by Jagdeep Singh on 12/06/21.
+//  Created by Jagdeep Singh on 20/06/21.
 //
 
 import UIKit
 
-class HeadlineLabel: UILabel {
+class TitleLabel: UILabel {
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
         configure()
     }
-    
-    init(withText: String, size: CGFloat) {
+    init(text: String) {
         super.init(frame: .zero)
         configure()
-        self.text = withText
-        self.font = .systemFont(ofSize: size)
+        self.text = text
     }
     
     required init?(coder: NSCoder) {
@@ -27,10 +25,11 @@ class HeadlineLabel: UILabel {
     
     private func configure() {
         textColor = .label
+        numberOfLines = 2
+        font = UIFont.preferredFont(forTextStyle: .largeTitle)
+        textColor = .label
+        font = .systemFont(ofSize: 40, weight: .bold)
         translatesAutoresizingMaskIntoConstraints = false
-        font = .systemFont(ofSize: 22, weight: .semibold)
-        lineBreakMode = .byTruncatingTail
-        numberOfLines = 0
     }
     
 }
