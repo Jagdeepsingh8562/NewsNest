@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B91545D2267F3B2C0069CB3A /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91545D1267F3B2C0069CB3A /* TitleLabel.swift */; };
+		B91545D4267F457A0069CB3A /* NewsTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91545D3267F457A0069CB3A /* NewsTabBarController.swift */; };
 		B94A1ACE267EEF3C000A7081 /* UIViewcontroller+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94A1ACD267EEF3C000A7081 /* UIViewcontroller+Preview.swift */; };
 		B96EB3E92678D71600BA1F2C /* NewsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96EB3E82678D71600BA1F2C /* NewsTableVC.swift */; };
 		B96EB3ED2678D87900BA1F2C /* ACTabScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96EB3EB2678D87900BA1F2C /* ACTabScrollView.swift */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		B91545D1267F3B2C0069CB3A /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
+		B91545D3267F457A0069CB3A /* NewsTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTabBarController.swift; sourceTree = "<group>"; };
 		B94A1ACD267EEF3C000A7081 /* UIViewcontroller+Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewcontroller+Preview.swift"; sourceTree = "<group>"; };
 		B96EB3E82678D71600BA1F2C /* NewsTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableVC.swift; sourceTree = "<group>"; };
 		B96EB3EB2678D87900BA1F2C /* ACTabScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACTabScrollView.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				B9EFFFA92673C58B00A1D514 /* TopHeadlinesVC.swift */,
 				B9EFFFAB2673C5A500A1D514 /* NewsSearchVC.swift */,
 				B9EFFFAD2673C5D500A1D514 /* NewsCategoryVC.swift */,
+				B91545D3267F457A0069CB3A /* NewsTabBarController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				B94A1ACE267EEF3C000A7081 /* UIViewcontroller+Preview.swift in Sources */,
 				B9AA659E2674D33600AEF335 /* NewsCell.swift in Sources */,
 				B96EB3ED2678D87900BA1F2C /* ACTabScrollView.swift in Sources */,
+				B91545D4267F457A0069CB3A /* NewsTabBarController.swift in Sources */,
 				B96EB3E92678D71600BA1F2C /* NewsTableVC.swift in Sources */,
 				B9EFFFAC2673C5A500A1D514 /* NewsSearchVC.swift in Sources */,
 			);

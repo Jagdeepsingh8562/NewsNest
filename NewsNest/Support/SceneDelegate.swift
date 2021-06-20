@@ -18,42 +18,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController =  PersistanceManager.shared.isNewUser() ? MainPageVC() : createTabBar()
+        window?.rootViewController =  PersistanceManager.shared.isNewUser() ? MainPageVC() : NewsTabBarController()
         window?.makeKeyAndVisible()
     }
     
-    
-    func createTopHeadlinesNC() -> UINavigationController {
-        let topHeadlinesVC = TopHeadlinesVC()
-        topHeadlinesVC.title = "Top Headlines"
-        topHeadlinesVC.tabBarItem = UITabBarItem(title: "Top Headlines", image: UIImage(systemName: "newspaper"),tag: 0)
-        UINavigationBar.appearance().prefersLargeTitles = true
-        return UINavigationController(rootViewController: topHeadlinesVC)
-    }
-    
-    func createSearchNC() -> UINavigationController {
-        let searchVC = NewsSearchVC()
-        searchVC.title = "News Search"
-        searchVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
-        return UINavigationController(rootViewController: searchVC)
-    }
-    
-    func createCategoryNC() -> UINavigationController {
-        let categoryVC = NewsCategoryVC()
-        categoryVC.title = "News by Category"
-        categoryVC.tabBarItem = UITabBarItem(title: "Category", image: UIImage(systemName: "tag"),tag: 2)
-        let categoryNC = UINavigationController(rootViewController: categoryVC)
-        categoryNC.navigationBar.prefersLargeTitles = false
-        return categoryNC
-    }
-    
-    func createTabBar() -> UITabBarController {
-        let tabBar = UITabBarController()
-        UITabBar.appearance().tintColor = .systemBlue
-        tabBar.viewControllers = [createTopHeadlinesNC(), createSearchNC(), createCategoryNC()]
-        return tabBar
-    }
-
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.

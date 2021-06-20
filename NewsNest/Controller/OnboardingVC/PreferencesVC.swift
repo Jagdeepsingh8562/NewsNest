@@ -56,8 +56,7 @@ class PreferencesVC: UIViewController {
         let alertVC = UIAlertController(title: "Confirm Your Preferences", message: "Selected Country is \(selectedCountry)\n Selected Languange is \(selectedLanguage)", preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
             self.modalPresentationStyle = .fullScreen
-            self.present(TopHeadlinesVC(), animated: true)
-           
+            self.present(NewsTabBarController(), animated: true)
         }))
         present(alertVC, animated: true)
     }
