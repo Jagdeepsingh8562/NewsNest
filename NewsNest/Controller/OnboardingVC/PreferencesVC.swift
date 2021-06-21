@@ -12,7 +12,7 @@ class PreferencesVC: UIViewController {
     let titleLabel = TitleLabel(text: "Setting up\nNews Prefereneces")
     let countryPickerView = UIPickerView()
     let languagePickerView = UIPickerView()
-    let doneButton = makeButton(withText: "Done")
+    let doneButton = CustomButton(type: .system, text: "Done")
     let setCountryLabel = HeadlineLabel(withText: "Set Your Country", size: 18)
     let setLanguageLabel = HeadlineLabel(withText: "Set Your Language", size: 18)
     
@@ -32,20 +32,19 @@ class PreferencesVC: UIViewController {
         return languages
     }()
     
-    var selectedCountry = ""
-    var selectedLanguage = ""
+    var selectedCountry = "India"
+    var selectedLanguage = "English"
     
     override func viewDidLoad() {
         layoutUI()
+        view.backgroundColor = .systemBackground
         doneButton.addTarget(self, action: #selector(doneButtonTapped), for: .touchUpInside)
     }
     //Navigation to TopHeadlineVC
     @objc func doneButtonTapped() {
-        PersistanceManager.shared.setIsNotNewUser()
+        confirmingInfoAlert(selectedCountry: selectedCountry, selectedLanguage: selectedLanguage)
         PersistanceManager.shared.setCountry(country: Constant.countries[selectedCountry] ?? "in")
         PersistanceManager.shared.setLanguage(country: Constant.languages[selectedLanguage] ?? "en")
-        
-        confirmingInfoAlert(selectedCountry: selectedCountry, selectedLanguage: selectedLanguage)
         //Delete
         print(PersistanceManager.shared.getSelectedCountry())
         print(PersistanceManager.shared.getSelectedLanguage())
@@ -55,8 +54,18 @@ class PreferencesVC: UIViewController {
     private func confirmingInfoAlert(selectedCountry: String, selectedLanguage: String) {
         let alertVC = UIAlertController(title: "Confirm Your Preferences", message: "Selected Country is \(selectedCountry)\n Selected Languange is \(selectedLanguage)", preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
-            self.modalPresentationStyle = .fullScreen
-            self.present(NewsTabBarController(), animated: true)
+            let newUser = PersistanceManager.shared.isNewUser()
+            if newUser {
+                PersistanceManager.shared.setIsNotNewUser()
+                let vc = NewsTabBarController()
+                vc.modalPresentationStyle = .fullScreen
+                self.present(vc, animated: true)
+                
+            } else {
+                self.dismiss(animated: true) {
+                    NotificationCenter.default.post(name: NSNotification.Name("YoYo"), object: nil)
+                }
+            }
         }))
         present(alertVC, animated: true)
     }
@@ -143,15 +152,15 @@ extension PreferencesVC: UIPickerViewDataSource, UIPickerViewDelegate {
     
 }
 
-func makeButton(withText text: String) -> UIButton {
-    let button = UIButton(type: .system)
-    button.translatesAutoresizingMaskIntoConstraints = false
-    button.setTitle(text, for: .normal)
-    button.tintColor = .white
-    button.titleLabel?.adjustsFontSizeToFitWidth = true
-    button.contentEdgeInsets = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
-    button.backgroundColor = .systemBlue
-    button.layer.cornerRadius = 8
-    return button
-}
+//func makeButton(withText text: String) -> UIButton {
+//    let button = UIButton(type: .system)
+//    button.translatesAutoresizingMaskIntoConstraints = false
+//    button.setTitle(text, for: .normal)
+//    button.tintColor = .white
+//    button.titleLabel?.adjustsFontSizeToFitWidth = true
+//    button.contentEdgeInsets = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
+//    button.backgroundColor = .systemBlue
+//    button.layer.cornerRadius = 8
+//    return button
+//}
 

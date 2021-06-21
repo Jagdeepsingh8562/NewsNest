@@ -13,17 +13,28 @@ class TopHeadlinesVC: UIViewController {
     var articles: [Article] = []
     var page: Int = 1
     var hasMoreArticles: Bool = true
+    var updateData = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         configureTableView()
         getNewsAndUpdateUI(page: page)
+        
+        let barButton = UIBarButtonItem(image: UIImage(systemName: "slider.vertical.3"), style: .plain, target: self ,action: #selector(barButtonTapped))
+        navigationItem.rightBarButtonItem = barButton
+        NotificationCenter.default.addObserver(self, selector: #selector(networkCallAfterDismiss), name: NSNotification.Name("YoYo"), object: nil)
+    }
+    
+    @objc func networkCallAfterDismiss() {
+        updateData = true
+        getNewsAndUpdateUI(page: 1)
     }
     
     private func getNewsAndUpdateUI(page: Int) {
         showLoadingView()
-        NetworkManager.shared.getTopHeadline(page: page) {[weak self] result in
+        let country = PersistanceManager.shared.getSelectedCountry()
+        NetworkManager.shared.getTopHeadline(page: page, country: country) {[weak self] result in
             guard let self = self else {
                 return
             }
@@ -32,14 +43,17 @@ class TopHeadlinesVC: UIViewController {
             case .success(let articles):
                 print(articles.count)
                 if articles.count < 50 {self.hasMoreArticles = false}
-                self.articles.append(contentsOf: articles)
+                if self.updateData { self.articles = articles
+                } else { self.articles.append(contentsOf: articles) }
                 self.tableView.reloadData()
             case .failure(let error):
                 self.showAlert(message: error.rawValue, title: "Something went wrong")
             }
         }
     }
-    
+    @objc func barButtonTapped() {
+        present(PreferencesVC(), animated: true)
+    }
     private func configureTableView() {
         view.addSubview(tableView)
         tableView.frame = view.bounds

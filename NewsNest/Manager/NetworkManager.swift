@@ -22,24 +22,24 @@ class NetworkManager {
     
     enum Endpoints {
         
-        case getTopHeadlines(Int)
+        case getTopHeadlines(Int,String)
         case getSearch(String)
-        case getByCategory(String)
+        case getByCategory(String,String)
         
         var StringValue: String {
             switch self {
-            case .getTopHeadlines(let page):
-                return Const.baseUrl + "top-headlines?country=in&pageSize=50&apiKey=" + Const.nextapiKey + "&page=\(page)"
+            case .getTopHeadlines(let page,let conutry):
+                return Const.baseUrl + "top-headlines?country=\(conutry)&pageSize=50&apiKey=" + Const.apiKey + "&page=\(page)"
             case .getSearch(let query):
                 return Const.baseUrl + "everything?q=\(query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")&apiKey=" + Const.nextapiKey
-            case .getByCategory(let selectedCategory):
-                return Const.baseUrl + "top-headlines?category=\(selectedCategory.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")&apiKey=" + Const.otherApiKey
+            case .getByCategory(let selectedCategory,let language):
+                return Const.baseUrl + "top-headlines?category=\(selectedCategory.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")&language=\(language)&apiKey=" + Const.otherApiKey
             }
         }
     }
     
-    func getTopHeadline(page: Int,completion: @escaping (Result<[Article], CustomError>) -> Void) {
-        taskForGETRequest(url: Endpoints.getTopHeadlines(page).StringValue, responseType: NewsResponse.self, completion: { result in
+    func getTopHeadline(page: Int, country: String, completion: @escaping (Result<[Article], CustomError>) -> Void) {
+        taskForGETRequest(url: Endpoints.getTopHeadlines(page,country).StringValue, responseType: NewsResponse.self, completion: { result in
             switch result {
             case .success(let articles):
                 completion(.success(articles))
@@ -60,8 +60,8 @@ class NetworkManager {
         })
     }
     
-    func getByCategory(selectedCategory: String,completion: @escaping (Result<[Article], CustomError>) -> Void) {
-        taskForGETRequest(url: Endpoints.getByCategory(selectedCategory).StringValue, responseType: NewsResponse.self, completion: { result in
+    func getByCategory(selectedCategory: String, language: String, completion: @escaping (Result<[Article], CustomError>) -> Void) {
+        taskForGETRequest(url: Endpoints.getByCategory(selectedCategory,language).StringValue, responseType: NewsResponse.self, completion: { result in
             switch result {
             case .success(let articles):
                 completion(.success(articles))

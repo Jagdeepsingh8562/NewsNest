@@ -29,7 +29,7 @@ class NewsCategoryVC: UIViewController {
         tabScrollView.dataSource = self
         
         for category in Constant.categories {
-            let vc = NewsTableVC()
+            let vc = CategoryTableVC()
             vc.category = category
             addChild(vc)
             contentViews.append(vc.view)
@@ -40,7 +40,7 @@ class NewsCategoryVC: UIViewController {
             navigationBar.shadowImage = UIImage()
         }
         showLoadingView()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.4) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4.3) {
             self.dismissLoadingView()
         }
     }

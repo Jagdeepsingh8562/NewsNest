@@ -1,5 +1,5 @@
 //
-//  NewsTableVC.swift
+//  CategoryTableVC.swift
 //  NewsNest
 //
 //  Created by Jagdeep Singh on 15/06/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NewsTableVC: UIViewController {
+class CategoryTableVC: UIViewController {
 
     let tableView = UITableView()
     var category = ""
@@ -24,12 +24,11 @@ class NewsTableVC: UIViewController {
     
     private func getNewsAndUpdateUI(category: String) {
         //showLoadingView()
-        NetworkManager.shared.getByCategory(selectedCategory: category) {[weak self] result in
+        let language = PersistanceManager.shared.getSelectedLanguage()
+        NetworkManager.shared.getByCategory(selectedCategory: category,language: language) {[weak self] result in
             guard let self = self else {
                 return
             }
-            //NotificationCenter.default.post(name: Notification.Name(Keys.apiCallFinishedKey), object: nil)
-            
             switch result {
             case .success(let articles):
                 self.articles = articles
@@ -47,12 +46,13 @@ class NewsTableVC: UIViewController {
         tableView.rowHeight = 160
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 180, right: 0);
     }
     
 
 }
 
-extension NewsTableVC: UITableViewDelegate, UITableViewDataSource {
+extension CategoryTableVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         articles.count

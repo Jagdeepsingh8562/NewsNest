@@ -228,16 +228,4 @@ extension UIPageViewController {
 }
 
 
-#if DEBUG
-import SwiftUI
-
-@available(iOS 13, *)
-struct InfoVCPreview: PreviewProvider {
-    
-    static var previews: some View {
-        // view controller using programmatic UI
-        MainPageVC().toPreview()
-    }
-}
-#endif
 

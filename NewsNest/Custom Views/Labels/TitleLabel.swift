@@ -28,7 +28,7 @@ class TitleLabel: UILabel {
         numberOfLines = 2
         font = UIFont.preferredFont(forTextStyle: .largeTitle)
         textColor = .label
-        font = .systemFont(ofSize: 40, weight: .bold)
+        font = .systemFont(ofSize: 34, weight: .bold)
         translatesAutoresizingMaskIntoConstraints = false
     }
     
