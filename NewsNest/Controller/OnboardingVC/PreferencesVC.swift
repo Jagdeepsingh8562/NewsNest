@@ -9,7 +9,7 @@ import UIKit
 
 class PreferencesVC: UIViewController {
     
-    let titleLabel = TitleLabel(text: "Setting up\nNews Prefereneces")
+    let titleLabel = TitleLabel(text: "Setting up\nNews Preference")
     let countryPickerView = UIPickerView()
     let languagePickerView = UIPickerView()
     let doneButton = CustomButton(type: .system, text: "Done")
