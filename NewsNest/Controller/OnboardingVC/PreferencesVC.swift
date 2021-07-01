@@ -15,6 +15,8 @@ class PreferencesVC: UIViewController {
     let doneButton = CustomButton(type: .system, text: "Done")
     let setCountryLabel = HeadlineLabel(withText: "Set Your Country", size: 18)
     let setLanguageLabel = HeadlineLabel(withText: "Set Your Language", size: 18)
+    let defaultLanguageLabel = HeadlineLabel(withText: "By default: English", size: 18)
+    let defaultCountryLabel = HeadlineLabel(withText: "By default: India", size: 18)
     
     let countries: [String] = {
         var countries = [String]()
@@ -45,9 +47,6 @@ class PreferencesVC: UIViewController {
         confirmingInfoAlert(selectedCountry: selectedCountry, selectedLanguage: selectedLanguage)
         PersistanceManager.shared.setCountry(country: Constant.countries[selectedCountry] ?? "in")
         PersistanceManager.shared.setLanguage(country: Constant.languages[selectedLanguage] ?? "en")
-        //Delete
-        print(PersistanceManager.shared.getSelectedCountry())
-        print(PersistanceManager.shared.getSelectedLanguage())
         
     }
     
@@ -81,8 +80,10 @@ class PreferencesVC: UIViewController {
     private func layoutUI() {
         view.addSubview(titleLabel)
         view.addSubview(setCountryLabel)
+        view.addSubview(defaultCountryLabel)
         setupPickerView(pickerView: countryPickerView)
         view.addSubview(setLanguageLabel)
+        view.addSubview(defaultLanguageLabel)
         setupPickerView(pickerView: languagePickerView)
         view.addSubview(doneButton)
         
@@ -99,6 +100,11 @@ class PreferencesVC: UIViewController {
             setCountryLabel.widthAnchor.constraint(equalToConstant: 160),
             setCountryLabel.heightAnchor.constraint(equalToConstant: padding),
             
+            defaultCountryLabel.centerYAnchor.constraint(equalTo: setCountryLabel.centerYAnchor),
+            defaultCountryLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            defaultCountryLabel.widthAnchor.constraint(equalToConstant: 140),
+            defaultCountryLabel.heightAnchor.constraint(equalToConstant: padding),
+            
             countryPickerView.topAnchor.constraint(equalTo: setCountryLabel.bottomAnchor, constant: padding),
             countryPickerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant : padding),
             countryPickerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
@@ -108,6 +114,11 @@ class PreferencesVC: UIViewController {
             setLanguageLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
             setLanguageLabel.widthAnchor.constraint(equalToConstant: 160),
             setLanguageLabel.heightAnchor.constraint(equalToConstant: padding),
+            
+            defaultLanguageLabel.centerYAnchor.constraint(equalTo: setLanguageLabel.centerYAnchor),
+            defaultLanguageLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            defaultLanguageLabel.widthAnchor.constraint(equalToConstant: 160),
+            defaultLanguageLabel.heightAnchor.constraint(equalToConstant: padding),
             
             languagePickerView.topAnchor.constraint(equalTo: setLanguageLabel.bottomAnchor, constant: padding),
             languagePickerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant : padding),
