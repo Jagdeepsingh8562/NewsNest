@@ -19,6 +19,10 @@ class NewsCategoryVC: UIViewController {
         configureUI()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        tabScrollView.changePageToIndex(0, animated: false)
+    }
+    
     
     private func configureUI(){
         view.addSubview(tabScrollView)
@@ -38,10 +42,6 @@ class NewsCategoryVC: UIViewController {
             navigationBar.isTranslucent = false
             navigationBar.titleTextAttributes = NSDictionary(object: UIColor.label, forKey: NSAttributedString.Key.foregroundColor as NSCopying) as? [NSAttributedString.Key : AnyObject]
             navigationBar.shadowImage = UIImage()
-        }
-        showLoadingView()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 4.3) {
-            self.dismissLoadingView()
         }
     }
     

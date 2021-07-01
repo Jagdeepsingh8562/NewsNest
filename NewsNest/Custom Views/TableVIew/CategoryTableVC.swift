@@ -12,23 +12,36 @@ class CategoryTableVC: UIViewController {
     let tableView = UITableView()
     var category = ""
     var articles: [Article] = []
+    var updateData = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         configureTableView()
         getNewsAndUpdateUI(category: category)
+        NotificationCenter.default.addObserver(self, selector: #selector(networkCallAfterDismiss), name: Keys.refreshNotification, object: nil)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        if updateData {
+            getNewsAndUpdateUI(category: category)
+        }
+    }
+    
+    @objc func networkCallAfterDismiss() {
+       updateData = true
+    }
    
     
     private func getNewsAndUpdateUI(category: String) {
-        //showLoadingView()
+        updateData = false
+        if category == "technology" { showLoadingView()}
         let language = PersistanceManager.shared.getSelectedLanguage()
         NetworkManager.shared.getByCategory(selectedCategory: category,language: language) {[weak self] result in
             guard let self = self else {
                 return
             }
+            if category == "technology" { self.dismissLoadingView() }
             switch result {
             case .success(let articles):
                 self.articles = articles

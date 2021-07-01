@@ -63,7 +63,7 @@ class PreferencesVC: UIViewController {
                 
             } else {
                 self.dismiss(animated: true) {
-                    NotificationCenter.default.post(name: NSNotification.Name("YoYo"), object: nil)
+                    NotificationCenter.default.post(name: Keys.refreshNotification, object: nil)
                 }
             }
         }))

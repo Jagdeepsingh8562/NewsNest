@@ -85,4 +85,5 @@ enum Keys {
     static let newUserKey = "NEWUSER"
     static let countryKey = "COUNTRYKEY"
     static let LanguageKey = "LANGUAGEKEY"
+    static let refreshNotification = NSNotification.Name("YoYo")
 }

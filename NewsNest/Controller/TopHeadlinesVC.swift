@@ -23,7 +23,7 @@ class TopHeadlinesVC: UIViewController {
         
         let barButton = UIBarButtonItem(image: UIImage(systemName: "slider.vertical.3"), style: .plain, target: self ,action: #selector(barButtonTapped))
         navigationItem.rightBarButtonItem = barButton
-        NotificationCenter.default.addObserver(self, selector: #selector(networkCallAfterDismiss), name: NSNotification.Name("YoYo"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(networkCallAfterDismiss), name: Keys.refreshNotification, object: nil)
     }
     
     @objc func networkCallAfterDismiss() {
