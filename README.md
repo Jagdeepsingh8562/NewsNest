@@ -1,6 +1,7 @@
 # NewsNest
 
 The NewsNest app utilizes NewsAPI and shows users the Top Headlines of country, Technology News, Sports News, and many others. Users can also search News via Topic like Apple, Users can set their country and language, and News will be shown accordingly.
+<a href = "https://apps.apple.com/app/id1574468078"><img src = "https://e7.pngegg.com/pngimages/718/1015/png-clipart-app-store-apple-google-play-apple-text-logo.png"></a>
 
 ## App Features
 
@@ -28,4 +29,4 @@ The NewsNest app utilizes NewsAPI and shows users the Top Headlines of country, 
 1. https://www.NewsAPI.org/
 
 ## License
-This code is free and open source and I have build this project for my Udacity submission.
+This code is free and open source.
