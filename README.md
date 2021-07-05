@@ -1,7 +1,7 @@
 # NewsNest
 
 The NewsNest app utilizes NewsAPI and shows users the Top Headlines of country, Technology News, Sports News, and many others. Users can also search News via Topic like Apple, Users can set their country and language, and News will be shown accordingly.
-<a href = "https://apps.apple.com/app/id1574468078"><img src = "https://www.pnglib.com/wp-content/uploads/2020/01/download-on-the-app-store_5e123236d838b.png" width = "180" height = "100"></a>
+<a href = "https://apps.apple.com/app/id1574468078"><img src = "https://www.pnglib.com/wp-content/uploads/2020/01/download-on-the-app-store_5e123236d838b.png" width = "220" height = "80"></a>
 
 ## App Features
 
